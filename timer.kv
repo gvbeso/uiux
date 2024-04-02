@@ -1,0 +1,48 @@
+Interface:
+    orientation:"vertical"
+    MDTopAppBar:
+        title: "Time App"
+            # main ს გავატანოთ აიდით
+        #id:appbar1
+        #right_action_items: [["weather-night", lambda x: app.changetheme(appbar1)]]
+            # main ს გავატანოთ მარტივად
+        right_action_items: [["weather-night", lambda x: app.changetheme(self)]]
+    MDAnchorLayout:
+#        anchor_x:'center'
+#        anchor_y:'center'
+        MDBoxLayout:
+            spacing:dp(50)
+            adaptive_height: True
+            orientation:'vertical'
+            MDLabel:
+                id:displaytimer
+                text:'00 : 00 : 00'
+                font_name:'digital.ttf'
+                font_size:'64sp'
+                halign:'center'
+                size_hint_y:None
+                height:self.texture_size[1]
+            MDProgressBar:
+                type:'indeterminate'
+                id:progrss
+                size_hint:None,None
+                size:dp(300),dp(30)
+                pos_hint:{'center_x':.5}
+            Custombutton:
+                size_hint:None,None
+                size:dp(250),dp(250)
+                md_bg_color:app.theme_cls.primary_color
+                radius:25
+                elevation:1
+                on_press:root.start_timer()
+                pos_hint:{'center_x':0.5}
+                MDIcon:
+                    id:mdicon
+                    icon:'timer-play-outline'
+                    font_size:dp(200)
+                    color:app.theme_cls.bg_normal
+    MDFloatingActionButton:
+        icon:'broom'
+        md_bg_color:app.theme_cls.primary_color
+        pos_hint:{'right':1}
+        on_press:displaytimer.text='00 : 00 : 00'
